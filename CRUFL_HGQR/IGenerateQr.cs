@@ -10,5 +10,6 @@ namespace CRUFL_HGQR
     public interface IGenerateQr
     {
         string generate(string value);
+        string test();
     }
 }

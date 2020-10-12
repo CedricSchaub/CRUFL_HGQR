@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using QRCoder;
 
 namespace CRUFL_HGQR
 {
@@ -12,7 +13,22 @@ namespace CRUFL_HGQR
      
         public string generate(string value)
         {
-            return "Dieser Text ist von der C# Bibliothek " + value;
+            QRCodeGenerator generator = new QRCodeGenerator();
+            QRCodeData codeData = generator.CreateQrCode(value, QRCodeGenerator.ECCLevel.Q);
+            byte[] rawData = codeData.GetRawData(QRCodeData.Compression.Uncompressed);
+
+            String result = "";
+
+            foreach(byte b in rawData) {
+                char c = Convert.ToChar(b);
+                result += c;
+            }
+
+            return result;
+        }
+
+        public string test() {
+            return "test";
         }
     }
 }
