@@ -12,9 +12,11 @@ namespace CRUFL_HGQR_MOCK
         static void Main(string[] args)
         {
             QrCode code = new QrCode();
-            String result = code.generate("test");
+            String ascii = code.generateAscii("test");
+            String base64 = code.generateBase64("test");
             
-            Console.WriteLine(result); 
+            Console.WriteLine(ascii);
+            Console.WriteLine(base64);
             Console.ReadLine();
 
         }

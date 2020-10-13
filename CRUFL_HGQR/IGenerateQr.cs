@@ -9,7 +9,8 @@ namespace CRUFL_HGQR
     [ComVisible(true), InterfaceType(ComInterfaceType.InterfaceIsDual), Guid("5A9DA6EA-241E-47F8-8232-5BBB256EA7F4")]
     public interface IGenerateQr
     {
-        string generate(string value);
+        string generateAscii(string value);
+        string generateBase64(string value);
         string test();
     }
 }

@@ -17,7 +17,7 @@ namespace CRUFL_HGQR_TEST
         [TestMethod]
         public void TestBasicQRCode() {
             CRUFL_HGQR.QrCode code = new CRUFL_HGQR.QrCode();
-            code.generate("test");
+            code.generateAscii("test");
         }
     }
 }

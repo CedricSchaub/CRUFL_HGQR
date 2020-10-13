@@ -11,20 +11,22 @@ namespace CRUFL_HGQR
     public class QrCode : IGenerateQr
     {
      
-        public string generate(string value)
+        public string generateAscii(string value)
         {
             QRCodeGenerator generator = new QRCodeGenerator();
             QRCodeData codeData = generator.CreateQrCode(value, QRCodeGenerator.ECCLevel.Q);
-            byte[] rawData = codeData.GetRawData(QRCodeData.Compression.Uncompressed);
+            AsciiQRCode asciiCode = new AsciiQRCode(codeData);
+     
+            return asciiCode.GetGraphic(1);
+        }
 
-            String result = "";
+        public string generateBase64(string value) {
+            QRCodeGenerator generator = new QRCodeGenerator();
+            QRCodeData codeData = generator.CreateQrCode(value, QRCodeGenerator.ECCLevel.Q);
+     
+            Base64QRCode base64Code = new Base64QRCode(codeData);
 
-            foreach(byte b in rawData) {
-                char c = Convert.ToChar(b);
-                result += c;
-            }
-
-            return result;
+            return base64Code.GetGraphic(20);
         }
 
         public string test() {
